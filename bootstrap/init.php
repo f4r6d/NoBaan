@@ -1,5 +1,7 @@
 <?php
 
+include 'config.php';
+
 $doc_root = $_SERVER['DOCUMENT_ROOT'];
 $app_path = '/' . APP_PATH;
 
@@ -7,7 +9,6 @@ $app_path = '/' . APP_PATH;
 set_include_path($doc_root . $app_path);
 
 
-include 'config.php';
 include 'vendor/autoload.php';
 include 'models/database.php';
 include 'util/cacher.php';
