@@ -1,10 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./*.php",
+    "./views/*.php",
     "./node_modules/flowbite/**/*.js",
   ],
-
+  
+  darkMode: 'class',
+  
   theme: {
     extend: {},
   },
@@ -17,7 +19,8 @@ module.exports = {
     require('flowbite/plugin'),
     require('@tailwindcss/aspect-ratio'),
   ],
+
 }
 
-// npx tailwindcss -i ./input.css -o ./assets/output.css --watch
+// npx tailwindcss -i ./input.css -o ./assets/css/output.css --watch
 
