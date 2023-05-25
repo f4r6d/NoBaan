@@ -112,7 +112,7 @@
                     <span class="bg-slate-100 text-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-slate-200  dark:text-slate-800 ml-3"><?= $product['stock'] ?></span>
                   </div>
                   <div class="flex items-center justify-between">
-                    <span class="text-3xl font-bold text-gray-900 dark:text-white">$599</span>
+                    <span class="text-3xl font-bold text-gray-900 dark:text-white"><?= $product['price'] ?> تومان</span>
                     <a href="?action=add&amp;item=<?= $product['id'] ?>&amp;sort_key=<?= $sort_key ?>" class="text-slate-800 bg-slate-200 hover:bg-slate-300 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:ring-slate-800">افزودن به سبد خرید</a>
                   </div>
                 </div>
