@@ -28,3 +28,7 @@ define('REDIS_PASSWORD', '');
 // if you use memcached system fill this section
 define('MEMCACHED_SERVER', '127.0.0.1');
 define('MEMCACHED_PORT', '11211');
+
+// DISCOUNT PERCENT for every product which has DISCOUNT
+define('DISCOUNT_PERCENT', 10);
+

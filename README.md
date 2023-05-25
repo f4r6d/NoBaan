@@ -8,6 +8,6 @@ Test Project for Nobaan job appliment; a simple web app written by pure php and 
 - composer install
 - npm install
 
-- open config file in bootstrap folder and set database and cache systems information (optionally) and import nobaan.sql from bootstrap folder to your database.
+- open config file in bootstrap folder and set database and cache systems information (optionally) and import nobaan.sql from assets folder to your database.
 
 ##### have fun.
