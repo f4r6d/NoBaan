@@ -31,8 +31,12 @@
 
 
     <div class="relative  ">
+
+
+      <!-- Head Section -->
       <div class="flex items-center justify-between pb-4">
 
+        <!-- Night Mode Toggle -->
         <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
           <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -42,61 +46,41 @@
           </svg>
         </button>
 
+        <!-- Dropdown sort menu -->
         <div>
           <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
-            جدیدترین
+            <?= $_SESSION['sort_key'] ? $sort_keys[$_SESSION['sort_key']] : 'جدیدترین' ?>
             <svg class="w-3 h-3 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
 
-          <!-- Dropdown menu -->
           <div id="dropdownRadio" class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 text-right" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
             <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioButton">
-              <li>
-                <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                  <input id="filter-radio-example-1" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="filter-radio-example-1" class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">گران ترین</label>
-                </div>
-              </li>
-              <li>
-                <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                  <input checked="" id="filter-radio-example-2" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="filter-radio-example-2" class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">ارزان ترین</label>
-                </div>
-              </li>
-              <li>
-                <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                  <input id="filter-radio-example-3" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="filter-radio-example-3" class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">به ترتیب نام</label>
-                </div>
-              </li>
-              <li>
-                <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                  <input id="filter-radio-example-4" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="filter-radio-example-4" class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">قدیمی ترین</label>
-                </div>
-              </li>
-              <li>
-                <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                  <input id="filter-radio-example-5" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="filter-radio-example-5" class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">فقط با تخفیف</label>
-                </div>
-              </li>
+
+              <?php foreach ($sort_keys as $key => $val) : ?>
+                <li>
+                  <div onclick="location.href='?sort_key=<?= $key ?>';" class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                    <label for="<?= $key ?>" class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"><?= $val ?></label>
+                    <input type="radio" id="<?= $key ?>" value="<?= $key ?>" name="sort_key" <?= $_SESSION['sort_key'] == $key ? 'checked' : '' ?> class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  </div>
+                </li>
+              <?php endforeach; ?>
+
             </ul>
           </div>
         </div>
 
-
       </div>
 
 
+      <!-- Products list section -->
       <div class=" shadow-md dark:bg-gray-800 dark:text-white">
         <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <h2 class="sr-only">محصولات</h2>
-
           <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
 
+            <!-- Products -->
             <?php foreach ($products as $product) : ?>
 
               <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -108,26 +92,27 @@
                     <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white"><?= $product['name'] ?></h5>
                   </a>
                   <div class="flex items-center mt-2.5 mb-5">
-                  موجودی
+                    موجودی
                     <span class="bg-slate-100 text-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-slate-200  dark:text-slate-800 ml-3"><?= $product['stock'] ?></span>
                   </div>
                   <div class="flex items-center justify-between">
-                    <span class="text-3xl font-bold text-gray-900 dark:text-white"><?= $product['price'] ?> تومان</span>
-                    <a href="?action=add&amp;item=<?= $product['id'] ?>&amp;sort_key=<?= $sort_key ?>" class="text-slate-800 bg-slate-200 hover:bg-slate-300 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:ring-slate-800">افزودن به سبد خرید</a>
+                    <span class=" text-sm text-gray-900 dark:text-white">
+                      <?php if ($product['off']) : ?>
+                         <p class="line-through text-rose-300"><?= number_format($product['price']) ?></p>
+                         <p class=" text-cyan-500"><?= DISCOUNT_PERCENT ?> ٪ تخفیف</p>
+                      <?php endif; ?>
+                      <p class=" text-slate-900 dark:text-slate-300"><?= number_format($product['price'] * (1 - DISCOUNT_PERCENT * $product['off'] / 100)) ?> تومان</p>
+                    </span>
+                    <a href="?action=add&amp;item=<?= $product['id'] ?>&amp;sort_key=<?= $_SESSION['sort_key'] ?>" class="text-slate-800 bg-slate-200 hover:bg-slate-300 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:ring-slate-800">افزودن به سبد خرید</a>
                   </div>
                 </div>
               </div>
-       
-            <?php endforeach; ?>
 
+            <?php endforeach; ?>
 
           </div>
         </div>
       </div>
-
-
-
-
 
     </div>
 

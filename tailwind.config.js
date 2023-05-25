@@ -22,5 +22,6 @@ module.exports = {
 
 }
 
+// run this code to update css
 // npx tailwindcss -i ./input.css -o ./assets/css/output.css --watch
 
