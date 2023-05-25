@@ -1,7 +1,10 @@
 <?php
 
 define('SITE_TITLE', 'نوبان');
+
+// set this configs with your local configurations
 define('BASE_URL', 'http://localhost:8888/my_trainings/nobaan/');
+define('APP_PATH', 'my_trainings/NoBaan/');
 
 
 define('DATABASE_HOST', 'localhost');
