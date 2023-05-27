@@ -3,7 +3,7 @@
 function get_redis_client()
 {
     try {
-        if (REDIS_URI) {
+        if (!empty(REDIS_URI)) {
             $cache_client = new Predis\Client(REDIS_URI);
         } else {
             $cache_client = new Predis\Client([
@@ -16,7 +16,7 @@ function get_redis_client()
 
         // check client is connected to server
         $cache_client->ping();
-    } catch (\Predis\Connection\ConnectionException) {
+    } catch (\Predis\Connection\ConnectionException $e) {
         return false;
     }
     return $cache_client;

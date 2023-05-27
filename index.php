@@ -8,13 +8,20 @@ $sort_keys = [
     'id' => 'قدیمی ترین',
     '-price' => 'گران ترین',
     'price' => 'ارزان ترین',
-    '-off' => 'با تخفیف',
+    '-discount' => 'با تخفیف',
 ];
 
 // get sort key from post or get request
 $_SESSION['sort_key'] = filter_input(INPUT_GET, 'sort_key');
 if ($_SESSION['sort_key'] == NULL) {
     $_SESSION['sort_key'] = '-id';
+}
+
+
+// get sort key from post or get request
+$action = filter_input(INPUT_POST, 'action');
+if ($action == 'خرید') {
+    die(var_dump($_REQUEST));
 }
 
 
