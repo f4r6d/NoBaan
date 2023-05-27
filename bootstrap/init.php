@@ -13,6 +13,7 @@ include 'vendor/autoload.php';
 include 'models/database.php';
 include 'util/cacher.php';
 include 'models/product.php';
+include 'models/order.php';
 include 'util/helpers.php';
 
 // initialize cache client

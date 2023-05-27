@@ -1,10 +1,19 @@
 <?php
 
 // helper function for showing errors
-function display_error($error_message)
+function display_error($title, $error_message)
 {
-    include 'errors/error.php';
-    exit;
+    $_SESSION['title'] = $title;
+    $_SESSION['err'] = $error_message;
+    redirect('.');
+}
+
+// helper function for showing success messages
+function display_message($title, $message)
+{
+    $_SESSION['title'] = $title;
+    $_SESSION['msg'] = $message;
+    redirect('.');
 }
 
 // helper function for redirect

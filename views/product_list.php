@@ -53,7 +53,7 @@
 
           <form action="." method="post">
             <input type="hidden" name="sort_key" value="<?= $_SESSION['sort_key'] ?>">
-            <input type="hidden" name="product" value="<?= $product['id'] ?>">
+            <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
 
 
             <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">

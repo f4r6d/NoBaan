@@ -39,3 +39,12 @@ function get_from_redis($key)
         return unserialize($cache_client->get($key));
     }
 }
+
+function clear_from_redis($key)
+{
+    global $cache_client;
+    if ($cache_client) {
+
+        $cache_client->del($key);
+    }
+}

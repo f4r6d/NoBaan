@@ -19,3 +19,9 @@ function get_from_cache($key)
 {
     return ('get_from_' . CACHE_SYSTEM)($key);
 }
+
+// clear cache
+function clear_from_cache($key)
+{
+    return ('clear_from_' . CACHE_SYSTEM)($key);
+}

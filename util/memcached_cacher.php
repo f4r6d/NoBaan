@@ -25,13 +25,27 @@ function get_memcached_client()
 function set_on_memcached($key, $val)
 {
     global $cache_client;
+    if ($cache_client) {
 
-    $cache_client->add($key, serialize($val), CACHE_TTL);
+        $cache_client->add($key, serialize($val), CACHE_TTL);
+    }
 }
 
 function get_from_memcached($key)
 {
     global $cache_client;
+    if ($cache_client) {
 
-    return unserialize($cache_client->get($key));
+        return unserialize($cache_client->get($key));
+    }
+}
+
+
+function clear_from_memcached($key)
+{
+    global $cache_client;
+
+    if ($cache_client) {
+        $cache_client->delete($key);
+    }
 }
