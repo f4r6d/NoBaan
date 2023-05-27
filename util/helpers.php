@@ -28,7 +28,8 @@ function redirect($url)
 function compare_factory($sort_key)
 {
     $rev = 1;
-    if (str_starts_with($sort_key, '-')) {
+
+    if (substr($sort_key, 0, 1) === '-') {
         $sort_key = ltrim($sort_key, '-');
         $rev = -1;
     }

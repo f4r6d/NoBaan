@@ -17,6 +17,10 @@ if ($sort_key) {
     $_SESSION['sort_key'] = $sort_key;
 }
 
+if (!isset($_SESSION['sort_key'])) {
+    $_SESSION['sort_key'] = '-id';
+}
+
 // get action from post request
 $action = filter_input(INPUT_POST, 'action');
 if ($action == 'خرید') {
