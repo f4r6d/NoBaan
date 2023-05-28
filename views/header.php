@@ -52,7 +52,7 @@
 
     <!-- empty session -->
     <?php
-    if ($_SESSION['err'] === '') {
+    if (isset($_SESSION['err']) && $_SESSION['err'] === '') {
       unset($_SESSION['temp_order']);
     }
 
