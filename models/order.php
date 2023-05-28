@@ -31,8 +31,25 @@ function buy($product_id, $phone_number, $amount, $discounted)
         $result = $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
-        return display_error('buy error', $e->getMessage());
+        return display_error('خطا', 'در خرید سفارش، لطفا دوباره امتحان کنید');
     }
 
     return $result;
+}
+
+
+function get_orders()
+{
+    global $db;
+    $query = 'SELECT * FROM products JOIN orders ON orders.product_id = products.id ORDER BY orders.phone_number' ;
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $orders = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        return display_error('get_orders error',$e->getMessage());
+    }
+
+    return $orders;
 }

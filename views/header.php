@@ -50,8 +50,12 @@
       </div>
     <?php endif; ?>
 
-    <!-- empty session from messages -->
+    <!-- empty session -->
     <?php
+    if ($_SESSION['err'] === '') {
+      unset($_SESSION['temp_order']);
+    }
+
     $_SESSION['title'] = '';
     $_SESSION['msg'] = '';
     $_SESSION['err'] = '';

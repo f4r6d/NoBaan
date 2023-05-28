@@ -10,5 +10,5 @@ $dsn = "mysql:host={$host};dbname={$dbname}";
 try {
     $db = new PDO($dsn, $username, $password);
 } catch (PDOException $e) {
-    display_error($e->getMessage());
+    display_error('connect to database error', $e->getMessage());
 }

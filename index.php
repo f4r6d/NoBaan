@@ -68,19 +68,8 @@ if ($action == 'خرید') {
         }
     }
 
-    // if there is not any errors, buy the product
-    buy($product_id, $phone_number, $amount, $discounted);
-
-    // update product stock
-    update_product_stock($product_id, $product['stock'] - 1);
-
-    // clear old products list from cache  
-    clear_from_cache(CACHE_KEY);
-
-    // redirect to home page with success message
-    $title = $product['name'];
-    $message = ' به مبلغ ' . $amount . ' تومان برای شماره موبایل ' . $phone_number . ' با موفقیت ثبت شد';
-    display_message($title, $message);
+    // helper function buy product
+    buy_product($product, $phone_number, $amount, $discounted);
 }
 
 // order product without discount 
@@ -90,20 +79,17 @@ if ($action == 'تایید') {
     $amount = $_SESSION['temp_order']['amount'];
     $discounted = 0;
     $product = get_product($product_id);
-    
-    // place the order without discount
-    buy($product_id, $phone_number, $amount, $discounted);
 
-    // update product stock
-    update_product_stock($product_id, $product['stock'] - 1);
+    // helper function buy product
+    buy_product($product, $phone_number, $amount, $discounted);
+}
 
-    // clear old products list from cache  
-    clear_from_cache(CACHE_KEY);
 
-    // redirect to home page with success message
-    $title = $product['name'];
-    $message = ' به مبلغ ' . $amount . ' تومان برای شماره موبایل ' . $phone_number . ' با موفقیت ثبت شد';
-    display_message($title, $message);
+$action = filter_input(INPUT_GET, 'action');
+if ($action == 'orders') {
+    $orders = get_orders();
+    include 'views/order_list.php';
+    exit;
 }
 
 

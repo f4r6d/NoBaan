@@ -50,3 +50,21 @@ function product_sort(&$products, $sort_key)
     $compare_function = compare_factory($sort_key);
     usort($products, $compare_function);
 }
+
+function buy_product($product, $phone_number, $amount, $discounted) {
+
+    // place the order without discount
+    buy($product['id'], $phone_number, $amount, $discounted);
+
+    // update product stock
+    update_product_stock($product['id'], $product['stock'] - 1);
+    
+    // clear old products list from cache  
+    clear_from_cache(CACHE_KEY);
+
+    // redirect to home page with success message
+    $title = $product['name'];
+    $message = ' به مبلغ ' . $amount . ' تومان برای شماره موبایل ' . $phone_number . ' با موفقیت ثبت شد';
+    display_message($title, $message);
+    
+}
