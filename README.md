@@ -11,3 +11,5 @@ Test Project for Nobaan job appliment; a simple web app written by pure php and 
 - open config file in bootstrap folder and set database and cache systems information (optionally) and import nobaan.sql from assets folder to your database.
 
 ##### have fun.
+
+[Deployed Link](http://farshiid.freehost.io)
